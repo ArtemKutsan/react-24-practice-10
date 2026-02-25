@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/sections/Header';
 import PostsList from './components/PostsList';
 import CreatePost from './components/CreatePost';
+import postsSort from './utils/postsSort';
 
 const API_BASE_URL = 'https://699eb24878dda56d396b04ab.mockapi.io/api/v1';
 const POSTS_URL = `${API_BASE_URL}/posts`;
@@ -13,7 +14,8 @@ function App() {
 
   const fetchPosts = async (url) => {
     const response = await axios.get(url);
-    setPosts(response.data);
+
+    setPosts(postsSort(response.data));
   };
 
   const deletePost = async (id) => {

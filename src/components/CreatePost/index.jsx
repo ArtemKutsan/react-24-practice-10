@@ -9,7 +9,10 @@ function CreatePost({ onCreate }) {
     <div className={styles.wrapper}>
       <h3>Создать пост</h3>
 
-      <form onSubmit={handleSubmit(onCreate)} className={styles.form}>
+      <form
+        onSubmit={handleSubmit((data) => onCreate({ ...data, createdAt: Date.now() }))}
+        className={styles.form}
+      >
         <input
           type="text"
           placeholder="Заголовок"

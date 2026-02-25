@@ -1,12 +1,13 @@
 // src/components/PostsList/ListItem.jsx
 import styles from './ListItem.module.css';
 
-function ListItem({ id, title, text, onDelete }) {
+function ListItem({ id, title, text, createdAt, onDelete }) {
   return (
     <div className={styles.listItem}>
       <div className={styles.logo}>User logo</div>
 
       <div className={styles.postInfo}>
+        <span>{new Date(createdAt).toLocaleString()}</span>
         <div
           style={{
             display: 'flex',
