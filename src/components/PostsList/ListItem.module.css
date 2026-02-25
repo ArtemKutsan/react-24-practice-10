@@ -5,6 +5,7 @@
   margin-bottom: 1rem;
   border-radius: 2rem;
   gap: 2rem;
+  background-color: #fafafa;
 }
 
 .postInfo {
@@ -24,6 +25,11 @@
   flex-shrink: 0;
   line-height: 1;
   text-align: center;
+  font-size: 14px;
+  background-size: contain;
+  background-repeat: none;
+  background-position: center;
+  /* padding: 0.5rem; */
 }
 
 .delete {

@@ -13,6 +13,7 @@ function PostsList({ posts, onDelete }) {
           title={post.title}
           text={post.text}
           createdAt={post.createdAt}
+          userLogo={post.userLogo}
           onDelete={onDelete}
         />
       ))}

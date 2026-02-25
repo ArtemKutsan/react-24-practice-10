@@ -1,13 +1,22 @@
 // src/components/PostsList/ListItem.jsx
 import styles from './ListItem.module.css';
 
-function ListItem({ id, title, text, createdAt, onDelete }) {
+function ListItem({ id, title, text, createdAt, userLogo, onDelete }) {
   return (
     <div className={styles.listItem}>
-      <div className={styles.logo}>User logo</div>
-
+      <img className={styles.logo} src={userLogo} alt="Author" />
       <div className={styles.postInfo}>
-        <span>{new Date(createdAt).toLocaleString()}</span>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            fontSize: '14px',
+          }}
+        >
+          <span>{new Date(createdAt).toLocaleString()}</span>
+          <span>ID: {id}</span>
+        </div>
         <div
           style={{
             display: 'flex',
@@ -16,10 +25,9 @@ function ListItem({ id, title, text, createdAt, onDelete }) {
             justifyContent: 'space-between',
           }}
         >
-          <h3 style={{ margin: '0' }}>{title}</h3>
-          <span>ID: {id}</span>
+          <h2 style={{ margin: '0' }}>{`${title.charAt(0).toUpperCase() + title.slice(1)}`}</h2>
         </div>
-        <p>{text}</p>
+        <p>{`${text.charAt(0).toUpperCase() + text.slice(1)}`}</p>
 
         <button onClick={() => onDelete(id)} className={styles.delete}>
           Удалить
