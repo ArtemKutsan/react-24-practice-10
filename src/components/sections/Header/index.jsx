@@ -1,9 +1,9 @@
 // src/components/sections/Header/index.jsx
-// import styles from './Header.module.css';
+import styles from './Header.module.css';
 
 function Header() {
   return (
-    <header style={{ borderBottom: '1px solid #d4d4d4' }}>
+    <header className={styles.header}>
       <div className="container" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <svg
           width="44"
