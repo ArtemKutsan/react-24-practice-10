@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './components/sections/Header';
 import PostsList from './components/PostsList';
+import CreatePost from './components/CreatePost';
 
 const API_BASE_URL = 'https://699eb24878dda56d396b04ab.mockapi.io/api/v1';
 const POSTS_URL = `${API_BASE_URL}/posts`;
@@ -17,7 +18,12 @@ function App() {
 
   const deletePost = async (id) => {
     await axios.delete(`${POSTS_URL}/${id}`);
-    setPosts((prev) => prev.filter((post) => post.id !== id));
+    fetchPosts(POSTS_URL);
+  };
+
+  const createPost = async (data) => {
+    const response = await axios.post(POSTS_URL, data);
+    fetchPosts(POSTS_URL);
   };
 
   useEffect(() => {
@@ -33,7 +39,10 @@ function App() {
         <section>
           <div className="container">
             <h2>Задача 1: Блог</h2>
-            <PostsList posts={posts} onDelete={deletePost} />
+            <div style={{ display: 'flex', gap: '2rem' }}>
+              <PostsList posts={posts} onDelete={deletePost} />
+              <CreatePost onCreate={createPost} />
+            </div>
           </div>
         </section>
       </main>

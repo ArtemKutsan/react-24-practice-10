@@ -7,7 +7,14 @@ function ListItem({ id, title, text, onDelete }) {
       <div className={styles.logo}>User logo</div>
 
       <div className={styles.postInfo}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: '2rem',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <h3 style={{ margin: '0' }}>{title}</h3>
           <span>ID: {id}</span>
         </div>
