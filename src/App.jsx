@@ -14,17 +14,19 @@ function App() {
 
   const fetchPosts = async (url) => {
     const response = await axios.get(url);
-
+    console.log(response);
     setPosts(postsSort(response.data));
   };
 
   const deletePost = async (id) => {
-    await axios.delete(`${POSTS_URL}/${id}`);
+    const response = await axios.delete(`${POSTS_URL}/${id}`);
+    console.log(response);
     fetchPosts(POSTS_URL);
   };
 
   const createPost = async (data) => {
     const response = await axios.post(POSTS_URL, data);
+    console.log(response);
     fetchPosts(POSTS_URL);
   };
 
