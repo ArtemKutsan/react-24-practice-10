@@ -14,9 +14,9 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
-  // Переделать limit на состояния
-  // Сделать sortBy (orderBy) состоянием (сортировка по разным полям)
-  // Сделать search (filter) состоянием (поиск)
+  // Переделать limit на состояние (для выбора кол-ва отображаемых постов)
+  // Сделать sortBy (orderBy) состоянием (для сортировки по разным полям)
+  // Сделать search (filter) состоянием (для поиска)
   // Сделать field_name состоянием
 
   const fetchPosts = async (
