@@ -26,24 +26,29 @@ function App() {
     sortBy = 'createdAt',
     order = 'desc',
   ) => {
-    const url = new URL(urlString);
-    url.searchParams.append('sortBy', sortBy);
-    url.searchParams.append('order', order);
+    try {
+      const url = new URL(urlString);
+      url.searchParams.append('sortBy', sortBy);
+      url.searchParams.append('order', order);
 
-    if (page !== 1 && Boolean(limit) !== false) {
-      url.searchParams.append('page', page);
-      url.searchParams.append('limit', limit);
+      if (page !== 1 && Boolean(limit) !== false) {
+        url.searchParams.append('page', page);
+        url.searchParams.append('limit', limit);
+
+        const response = await axios.get(url);
+        console.log(response);
+        setPosts(response.data);
+        return;
+      }
+
       const response = await axios.get(url);
       console.log(response);
-      setPosts(response.data);
-      return;
+
+      setTotalPosts(response.data.length);
+      setPosts(response.data.slice(0, limit));
+    } catch (error) {
+      console.error('Ошибка при загрузке постов:', error);
     }
-
-    const response = await axios.get(url);
-    console.log(response);
-
-    setTotalPosts(response.data.length);
-    setPosts(response.data.slice(0, limit));
   };
 
   // const fetchPosts = async (url) => {
@@ -53,16 +58,24 @@ function App() {
   // };
 
   const deletePost = async (id) => {
-    const response = await axios.delete(`${POSTS_URL}/${id}`);
-    console.log(response);
-    fetchPosts(POSTS_URL, page, limit);
+    try {
+      const response = await axios.delete(`${POSTS_URL}/${id}`);
+      console.log(response);
+      fetchPosts(POSTS_URL, page, limit);
+    } catch (error) {
+      console.error('Ошибка при удалении поста:', error);
+    }
   };
 
   const createPost = async (data) => {
-    const response = await axios.post(POSTS_URL, data);
-    console.log(response);
-    setPage(1);
-    fetchPosts(POSTS_URL, page, limit);
+    try {
+      const response = await axios.post(POSTS_URL, data);
+      console.log(response);
+      setPage(1);
+      fetchPosts(POSTS_URL, page, limit);
+    } catch (error) {
+      console.error('Ошибка при создании поста:', error);
+    }
   };
 
   useEffect(() => {
