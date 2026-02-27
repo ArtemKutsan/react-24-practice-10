@@ -4,7 +4,7 @@ import ListItem from './ListItem';
 
 function PostsList({ posts, onDelete }) {
   return (
-    <div>
+    <div style={{ width: '100%', minWidth: '288px' }}>
       <h3>Список постов</h3>
       {posts.map((post) => (
         <ListItem
@@ -17,7 +17,6 @@ function PostsList({ posts, onDelete }) {
           onDelete={onDelete}
         />
       ))}
-      <button>Далее</button>
     </div>
   );
 }
