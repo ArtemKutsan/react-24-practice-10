@@ -20,7 +20,7 @@
 
 .textarea {
   width: 100%;
-  min-height: 120px;
+  min-height: 64px;
   padding: 1rem;
   border: 1px solid #d4d4d4;
   border-radius: 1rem;
